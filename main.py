@@ -24,6 +24,7 @@ async def on_ready():
 @bot.command()
 async def joined(ctx, member: discord.Member):
     """Says when a member joined."""
+
     await ctx.send(f'{member.name} joined {discord.utils.format_dt(member.joined_at)}')
 
 
@@ -61,7 +62,7 @@ async def getweather(ctx, *, city: str):
 
 
 @bot.command(name='recycle')
-async def cont(ctx: commands.context, *, args):
+async def cont(ctx: commands.context, *args):
     """answers like chatgpt"""
     result = str(args)
     response = openai.Completion.create(
@@ -75,5 +76,16 @@ async def cont(ctx: commands.context, *, args):
     stop=["You:"]
 )
     await ctx.send(embed=discord.Embed(title=f'{result}', description=response['choices'][0]['text']))
+
+
+@bot.command(name='calc')
+async def calc(ctx, *args):
+    """calculator"""
+    try:
+        await ctx.send(eval(*args))
+    except ZeroDivisionError:
+        await ctx.send('На ноль делить нельзя')
+    except TypeError:
+        await ctx.send('Введите числа, не строку/строки')
 
 bot.run("")
