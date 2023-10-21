@@ -11,8 +11,8 @@ intents = discord.Intents.default()
 intents.members = True
 intents.message_content = True
 bot = commands.Bot(command_prefix='/', intents=intents)
-openai.api_key = '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'
-Token = 'd09550d89a3970a7e9f56a0935d2a645'
+openai.api_key = ''
+Token = ''
 
 
 
@@ -76,4 +76,4 @@ async def cont(ctx: commands.context, *, args):
 )
     await ctx.send(embed=discord.Embed(title=f'{result}', description=response['choices'][0]['text']))
 
-bot.run("MTE2MDk5MDY1MjMwMjEwNjY2NA.G08nan.daQ2giBhhk4UWDxAeJHoZ5tDqq96wUMDRivL4Y")
+bot.run("")
